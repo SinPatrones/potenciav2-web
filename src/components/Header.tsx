@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -16,6 +17,7 @@ const navigation = [
       { name: "Talento Humano", href: "/servicios/talento-humano" },
     ],
   },
+  { name: "Bolsa de Trabajo", href: "/bolsa-trabajo" },
   { name: "Contacto", href: "/contacto" },
 ];
 
@@ -27,16 +29,29 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center">
-              <span className="text-white font-bold text-xl">P</span>
+          {/* Logo con animación navideña */}
+          <Link href="/" className="flex items-center gap-3 group christmas-logo">
+            <div className="relative">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden ring-2 ring-[var(--secondary)] ring-offset-2 christmas-glow">
+                <Image
+                  src="/images/potencia_v2_logo.jpg"
+                  alt="Potencia V2 Logo"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              </div>
+              {/* Copos de nieve decorativos */}
+              <span className="snowflake snowflake-1">*</span>
+              <span className="snowflake snowflake-2">*</span>
+              <span className="snowflake snowflake-3">*</span>
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-xl text-[var(--primary)]">
+            <div className="flex flex-col relative">
+              <span className="font-bold text-lg sm:text-xl text-[var(--primary)] christmas-text">
                 POTENCIA V2
               </span>
-              <span className="text-xs text-[var(--gray-500)]">
+              <span className="text-[10px] sm:text-xs text-[var(--gray-500)]">
                 Clinica de Empresas
               </span>
             </div>
@@ -69,16 +84,18 @@ export default function Header() {
                     </svg>
                   </button>
                   {servicesOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-[var(--gray-100)] py-2 animate-fade-in">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.name}
-                          href={child.href}
-                          className="block px-4 py-3 text-[var(--gray-700)] hover:bg-[var(--gray-50)] hover:text-[var(--secondary)] transition-colors"
-                        >
-                          {child.name}
-                        </Link>
-                      ))}
+                    <div className="absolute top-full left-0 pt-2 w-64">
+                      <div className="bg-white rounded-xl shadow-xl border border-[var(--gray-100)] py-2 animate-fade-in">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.name}
+                            href={child.href}
+                            className="block px-4 py-3 text-[var(--gray-700)] hover:bg-[var(--gray-50)] hover:text-[var(--secondary)] transition-colors"
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>

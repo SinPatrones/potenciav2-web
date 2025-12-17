@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const services = [
@@ -10,6 +11,7 @@ const services = [
 const quickLinks = [
   { name: "Inicio", href: "/" },
   { name: "Nosotros", href: "/nosotros" },
+  { name: "Bolsa de Trabajo", href: "/bolsa-trabajo" },
   { name: "Contacto", href: "/contacto" },
 ];
 
@@ -51,13 +53,27 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-[var(--secondary)] flex items-center justify-center">
-                <span className="text-white font-bold text-xl">P</span>
+            <Link href="/" className="flex items-center gap-3 mb-6 christmas-logo">
+              <div className="relative">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden ring-2 ring-[var(--secondary)] ring-offset-2 ring-offset-[var(--primary)] christmas-glow">
+                  <Image
+                    src="/images/potencia_v2_logo.jpg"
+                    alt="Potencia V2 Logo"
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Copos de nieve decorativos */}
+                <span className="snowflake snowflake-1">*</span>
+                <span className="snowflake snowflake-2">*</span>
+                <span className="snowflake snowflake-3">*</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-xl">POTENCIA V2</span>
-                <span className="text-xs text-[var(--gray-400)]">
+                <span className="font-bold text-lg sm:text-xl christmas-text-light">
+                  POTENCIA V2
+                </span>
+                <span className="text-[10px] sm:text-xs text-[var(--gray-400)]">
                   Clinica de Empresas
                 </span>
               </div>
@@ -213,6 +229,19 @@ export default function Footer() {
             </p>
             <p className="text-[var(--gold)] font-semibold text-sm">
               POTENCIA TU EMPRESA
+            </p>
+          </div>
+          <div className="mt-4 pt-4 border-t border-white/10 text-center">
+            <p className="text-[var(--gray-400)] text-sm">
+              Desarrollado por{" "}
+              <a
+                href="https://www.miempresa360.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--gold)] hover:text-white transition-colors font-medium"
+              >
+                Mi Empresa 360
+              </a>
             </p>
           </div>
         </div>
